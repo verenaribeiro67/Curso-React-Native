@@ -1,5 +1,6 @@
 # Curso-React-Native
 
-### Exercícios feitos com base o Curso React Native do Cod3r que se encontra na Udemy
+## Exercícios feitos com base o Curso React Native do Cod3r que se encontra na Udemy
 
-##### Verena Cavalcante - Dev Mobile
+###### Verena Cavalcante - Dev Mobile
+
