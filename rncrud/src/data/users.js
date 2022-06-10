@@ -9,7 +9,7 @@ export default [
     {
         id: 2,
         name: 'Luiz Queiroz',
-        email: 'riamasil@empmail.com',
+        email: 'luiz.caarvalho@gmail.com',
         avatarUrl:
             'https://media-exp2.licdn.com/dms/image/C4E03AQH-7zU8CnZXnA/profile-displayphoto-shrink_200_200/0/1590503314853?e=1660176000&v=beta&t=qeBDT93k6FINyJAJWCOKzPYRkgtzYyhEV_yCzJ3dvRc',
     },
@@ -27,4 +27,12 @@ export default [
         avatarUrl:
             'https://media-exp2.licdn.com/dms/image/C4D03AQEWYdg7M_KWnQ/profile-displayphoto-shrink_100_100/0/1545659772134?e=1660176000&v=beta&t=GgeHU51WtTsQ_5tL3EwJgvhWM1axlq7RnLoa9k3dGcw',
     },
+    {
+        id: 5,
+        name: 'Valdeli Vaz',
+        email: 'valdeli.vaz@ixcsoft.com.br',
+        avatarUrl:
+            'https://media-exp2.licdn.com/dms/image/C4D03AQH-quwBa1S4Fw/profile-displayphoto-shrink_100_100/0/1591616483424?e=1660176000&v=beta&t=k7G0Uq4LUNkd4scx3zsnm5yDixopl2PPHyD3KTBBAQc',
+    },
+
 ];

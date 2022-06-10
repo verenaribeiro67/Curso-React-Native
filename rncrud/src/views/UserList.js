@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import {Alert, FlatList, Text, View} from 'react-native'
-import { ListItem, Button, Icon, Avatar } from 'react-native-elements'
+import { View, FlatList, Alert } from 'react-native'
+import { ListItem, Button, Icon, Avatar, Text } from 'react-native-elements'
 import UsersContext from '../context/UsersContext'
 
 export default props => {
@@ -23,21 +23,20 @@ export default props => {
             }
         ])
     }
-    function getActions(user){
-        return(
+
+    function getActions(user) {
+        return (
             <>
-               <Button
-                   onPress={() => props.navigation.navigate('UserForm',user)}
-                   type="clear"
-                   icon={ <Icon name="edit" size={25} color="green"/> }
-               />
-
                 <Button
-                    onPress={() => confirmUserDeletion(user) }
+                    onPress={() => props.navigation.navigate('UserForm', user)}
                     type="clear"
-                    icon={ <Icon name="delete" size={25} color="red"/> }
+                    icon={<Icon name="edit" size={25} color="orange" />}
                 />
-
+                <Button
+                    onPress={() => confirmUserDeletion(user)}
+                    type="clear"
+                    icon={<Icon name="delete" size={25} color="red" />}
+                />
             </>
         )
     }
@@ -49,12 +48,12 @@ export default props => {
                 onPress={() => props.navigation.navigate('UserForm', user)}
 
             >
-                <Avatar source={{ uri: user.avatarUrl }} size={40}/>
+                <Avatar source={{ uri: user.avatarUrl }} size={50}/>
                 <ListItem.Content>
                     <ListItem.Title><Text>{user.name}</Text></ListItem.Title>
                     <ListItem.Subtitle><Text>{user.email}</Text></ListItem.Subtitle>
                 </ListItem.Content>
-                {getActions()}
+                {getActions(user)}
             </ListItem>
 
         )

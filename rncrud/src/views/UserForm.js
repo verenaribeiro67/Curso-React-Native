@@ -48,7 +48,7 @@ const style = StyleSheet.create({
         padding: 12
     },
     input: {
-        height: 40,
+        height: 50,
         borderColor: 'gray',
         borderWidth: 1,
         marginBottom: 15,

@@ -48,7 +48,7 @@ export default props => {
 
 const screenOptions = {
     headerStyle: {
-        backgroundColor: '#f4511e'
+        backgroundColor: '#5026ad'
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
