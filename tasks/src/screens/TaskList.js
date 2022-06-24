@@ -6,7 +6,6 @@ import moment from 'moment'
 import 'moment/locale/pt-br'
 import commomStyles from '../commomStyles'
 import Task from '../components/Task'
-import task from "../components/Task";
 
 export default class TaskList extends Component {
 
@@ -29,8 +28,8 @@ export default class TaskList extends Component {
         return (
             <View style={styles.container}>
                 <ImageBackground
-                source={todayImage}
-                style={styles.background}>
+                    source={todayImage}
+                    style={styles.background}>
 
                     <View style={styles.titleBar}>
                         <Text style={styles.title}>Hoje</Text>
@@ -44,7 +43,7 @@ export default class TaskList extends Component {
                         data={this.state.tasks}
                         keyExtractor={item => `${item.id}`}
                         renderItem={({item}) =>
-                       <Task {...item}/>} />
+                            <Task {...item}/>} />
 
                 </View>
 
@@ -74,7 +73,7 @@ const styles = StyleSheet.create({
         color: commomStyles.colors.secondary,
         marginBottom: 20,
         marginLeft: 20
-},
+    },
     subtitle: {
         fontFamily: commomStyles.fontFamily,
         fontSize: 20,

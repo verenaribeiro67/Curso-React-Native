@@ -1,46 +1,74 @@
 import React from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
-// import checkImage from '../../assets/imgs/check.png'
-import commomStyles from '../commomStyles'
+import {
+    View,
+    Text,
+    StyleSheet,
+    TouchableWithoutFeedback,
+    TouchableOpacity
+} from 'react-native'
+import Swipeable from 'react-native-gesture-handler/Swipeable'
+import Icon from 'react-native-vector-icons/FontAwesome'
+
 import moment from 'moment'
 import 'moment/locale/pt-br'
+
+import commonStyles from '../commomStyles'
 
 export default props => {
 
     const doneOrNotStyle = props.doneAt != null ?
-        {textDecorationLine: 'line-through'} : { }
+        { textDecorationLine: 'line-through' } : {}
 
     const date = props.doneAt ? props.doneAt : props.estimateAt
-
-    const formattedDate = moment(props.estimateAt).locale('pt-br').format('ddd,D [de] MMMM, YYYY')
-
-    return (
-        <View style={styles.container}>
-
-            <View styles={styles.CheckContainer}>
-                {getCheckView(props.doneAt)}
-            </View>
-
-            <View>
-                <Text style={[styles.desc, doneOrNotStyle]}>{props.desc}</Text>
-                <Text style={styles.date}>{formattedDate}</Text>
-            </View>
+    const formattedDate = moment(date).locale('pt-br')
+        .format('ddd, D [de] MMMM')
 
 
-        </View>
-    )
-}
+    const getRightContent = () => {
+        return (
+            <TouchableOpacity style={styles.right} onPress={()=>props.onDelete && props.onDelete(props.id)}>
+                <Icon name='trash' size={30} color={'#FFF'} />
+            </TouchableOpacity>
+        )
+    }
 
-function getCheckView(doneAt){
-    if (doneAt != null ){
-        return(
-            <View style={styles.done}>
-                <Text>OK</Text>
+    const getLeftContent = () => {
+        return (
+            <View style={styles.left}>
+                <Icon name='trash' size={20} color={'#FFF'} style={styles.excludeIcon} />
+                <Text style={styles.excludeText}>Excluir</Text>
             </View>
         )
     }
-        else {
-        return(
+
+    return (
+        <Swipeable renderRightActions={getRightContent}
+                   renderLeftActions={getLeftContent}
+                   onSwipeableLeftOpen={()=>props.onDelete && props.onDelete(props.id)}>
+            <View style={styles.container}>
+                <TouchableWithoutFeedback onPress={()=> props.onToogleTask(props.id)}>
+                    <View style={styles.checkContainer}>
+                        {getCheckView(props.doneAt)}
+                    </View>
+                </TouchableWithoutFeedback>
+                <View>
+                    <Text style={[styles.desc, doneOrNotStyle]}>{props.desc}</Text>
+                    <Text style={styles.date}>{formattedDate}</Text>
+                </View>
+            </View>
+        </Swipeable>
+    );
+}
+
+function getCheckView(doneAt) {
+    if(doneAt != null) {
+        return (
+            <View style={styles.done}>
+                <Icon name='check' size={20} color='#FFF'></Icon>
+            </View>
+        )
+    } else {
+        return (
             <View style={styles.pending}></View>
         )
     }
@@ -48,13 +76,14 @@ function getCheckView(doneAt){
 
 const styles = StyleSheet.create({
     container: {
-         flexDirection: 'row',
-         borderColor: '#AAA',
-         borderBottomWidth: 1,
-         alignItems: 'center',
-         paddingVertical: 10
+        flexDirection: 'row',
+        borderColor: '#AAA',
+        borderBottomWidth: 1,
+        alignItems: 'center',
+        paddingVertical: 10,
+        backgroundColor: '#FFF'
     },
-    CheckContainer: {
+    checkContainer: {
         width: '20%',
         alignItems: 'center',
         justifyContent: 'center'
@@ -64,32 +93,46 @@ const styles = StyleSheet.create({
         width: 25,
         borderRadius: 13,
         borderWidth: 1,
-        borderColor: '#555',
-        margin: 20
+        borderColor: '#555'
     },
     done: {
         height: 25,
         width: 25,
         borderRadius: 13,
-        borderWidth: 1,
-        margin: 20,
-        backgroundColor: '#52a40f',
+        backgroundColor: '#4D7031',
+        alignItems: 'center',
         justifyContent: 'center'
     },
-    checkImg: {
-        width: 15,
-        height: 15,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
     desc: {
-        fontFamily: commomStyles.fontFamily,
-        color: commomStyles.colors.mainText,
+        fontFamily: commonStyles.fontFamily,
+        color: commonStyles.colors.mainText,
         fontSize: 15
     },
     date: {
-    fontFamily: commomStyles.fontFamily,
-        color: commomStyles.colors.subtext,
+        fontFamily: commonStyles.fontFamily,
+        color: commonStyles.colors.subText,
         fontSize: 12
+    },
+    right: {
+        backgroundColor: 'red',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        paddingHorizontal: 20
+    },
+    left: {
+        flex: 1,
+        backgroundColor: 'red',
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    excludeIcon: {
+        marginLeft: 10
+    },
+    excludeText: {
+        fontFamily: commonStyles.fontFamily,
+        color: '#FFF',
+        fontSize: 20,
+        margin: 10
     }
 })
