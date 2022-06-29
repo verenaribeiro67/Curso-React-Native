@@ -3,7 +3,14 @@ apply from: file("../node_modules/@react-native-community/cli-platform-android/n
 include ':app'
 includeBuild('../node_modules/react-native-gradle-plugin')
 
+
 if (settings.hasProperty("newArchEnabled") && settings.newArchEnabled == "true") {
     include(":ReactAndroid")
     project(":ReactAndroid").projectDir = file('../node_modules/react-native/ReactAndroid')
 }
+//
+// includeBuild('../node_modules/react-native/packages/react-native-gradle-plugin') {
+//    dependencySubstitution {
+//        substitute(module("com.facebook.react:react-native-gradle-plugin")).using(project(":"))
+//    }
+// }

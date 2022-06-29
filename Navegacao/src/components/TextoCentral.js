@@ -1,20 +1,18 @@
 import React from 'react'
-import { SafeAreaView } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native'
-import {LogBox } from 'react-native';
-
-LogBox.ignoreLogs(['Reanimated 2']);
-
-// import Drawer from './Drawer'
-import Tab from '../navegacao/Tab'
-// import Stack from './Stack'
+import { View, Text } from 'react-native'
 
 export default props => (
-    <SafeAreaView style={{flex: 1}}>
-        <NavigationContainer>
-            {/* <Drawer /> */}
-            <Tab />
-            {/* <Stack /> */}
-        </NavigationContainer>
-    </SafeAreaView>
+    <View style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: props.corFundo || '#000'
+    }}>
+        <Text style={{
+            fontSize: 50,
+            color: props.corTexto || '#FFF'
+        }}>
+            {props.children}
+        </Text>
+    </View>
 )

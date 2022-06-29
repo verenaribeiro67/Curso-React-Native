@@ -6,23 +6,23 @@ export default props => (
         <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
             {props.voltar
                 ?   <Button
-                        title='Voltar'
-                        onPress={() => {
-                            props.navigation.goBack()
-                        }}
-                    />
+                    title='Voltar'
+                    onPress={() => {
+                        props.navigation.goBack()
+                    }}
+                />
                 : false
             }
             {props.avancar
                 ?   <Button
-                        title='Avançar'
-                        onPress={() => {
-                            props.navigation.navigate(
-                                props.avancar,
-                                props.avancarParams
-                            )
-                        }}
-                    />
+                    title='Avançar'
+                    onPress={() => {
+                        props.navigation.navigate(
+                            props.avancar,
+                            props.avancarParams
+                        )
+                    }}
+                />
                 : false
             }
         </View>
@@ -31,4 +31,3 @@ export default props => (
         </View>
     </View>
 )
-© 2022 GitHub, Inc.
